@@ -3,3 +3,5 @@ stripe
 requests
 pytz
 playwright
+pandas
+ta
