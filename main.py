@@ -164,3 +164,31 @@ def run_flask():
 
 Thread(target=run_flask).start()
 Thread(target=strategy_loop).start()
+import random
+
+@app.route("/test-signal", methods=["GET"])
+def test_signal():
+    major_pairs = [
+        "EUR/USD", "GBP/USD", "USD/JPY",
+        "USD/CHF", "AUD/USD", "USD/CAD", "NZD/USD"
+    ]
+    pair = random.choice(major_pairs)
+    price = round(random.uniform(1.00000, 1.50000), 5)
+    direction = random.choice(["CALL", "PUT"])
+
+    utc_now = datetime.utcnow()
+    est_now = datetime.now(pytz.timezone("US/Eastern"))
+    utc_time = utc_now.strftime("%H:%M")
+    est_time = est_now.strftime("%I:%M %p")
+
+    message = f"""**TEST SIGNAL: {pair}**
+Direction: {direction}
+Current Price: {price}
+UTC Time: {utc_time}
+EST Time: {est_time}
+Strategy: MACD + EMA + ADX (Simulated)
+——————————————
+Test {direction} trade at {price} on Pocket Option."""
+
+    response = requests.post(WEBHOOK_URL, json={"content": message})
+    return "Test signal sent!" if response.status_code == 204 else "Failed to send test signal."
