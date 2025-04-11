@@ -23,7 +23,7 @@ signal_log = {pair: {"count": 0, "last_time": "", "last_dir": "", "last_price": 
 
 def fetch_prices():
     with sync_playwright() as p:
-        browser = browser = playwright.chromium.launch(headless=True)
+        browser = playwright.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto("https://pocketoption.com/en/cabinet/demo-quick/")
         time.sleep(10)
