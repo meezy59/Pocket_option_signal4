@@ -13,7 +13,7 @@ import ta
 
 app = Flask(__name__)
 
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/your_webhook_url_here"
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1360244182870003913/ZVKKaYMiWc9UYMGZfJd_iRLoKFhOZTXCVoXALSVqC2a9UxIL6VdHn_g0l0MvqtwEy_L5"
 CURRENCY_PAIRS = ["EUR/USD", "GBP/USD", "USD/JPY"]
 TIMEFRAME_SECONDS = 60
 DATA_POINTS_NEEDED = 30
@@ -23,7 +23,7 @@ signal_log = {pair: {"count": 0, "last_time": "", "last_dir": "", "last_price": 
 
 def fetch_prices():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = browser = playwright.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto("https://pocketoption.com/en/cabinet/demo-quick/")
         time.sleep(10)
