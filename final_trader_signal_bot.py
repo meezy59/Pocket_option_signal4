@@ -12,7 +12,7 @@ import requests
 import ta
 
 # === Configuration ===
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/your_webhook_here"
+DISCORD_WEBHOOK_URL ='https://discord.com/api/webhooks/1360244182870003913/ZVKKaYMiWc9UYMGZfJd_iRLoKFhOZTXCVoXALSVqC2a9UxIL6VdHn_g0l0MvqtwEy_L5'
 CURRENCY_PAIRS = ["EUR/USD", "GBP/USD", "USD/JPY"]
 TIMEFRAME_SECONDS = 60
 DATA_POINTS_NEEDED = 30
