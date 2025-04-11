@@ -21,6 +21,7 @@ PAIRS = {
 @app.route('/')
 def home():
     return "Bot is running!"
+
 @app.route("/webhook", methods=["POST"])
 def stripe_webhook():
     payload = request.get_data(as_text=True)
@@ -40,7 +41,7 @@ def stripe_webhook():
         give_discord_role(customer_email)
 
     return "Success", 200
-  def give_discord_role(email):
+def give_discord_role(email):
     user_id = "1358880705110605894"
     guild_id = os.getenv("DISCORD_GUILD_ID")
     role_id = "1358880705110605894"
@@ -54,7 +55,10 @@ def stripe_webhook():
         print(f"Role {role_id} assigned to user {user_id}")
     else:
         print("Failed to assign role:", response.text)
-      def get_live_price(pair_code):
+
+
+
+def get_live_price(pair_code):
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context()
@@ -78,8 +82,9 @@ def stripe_webhook():
 
         browser.close()
         return price
-      def is_high_confidence():
-    return True  # Replace with real logic if needed
+
+def is_high_confidence():
+    return True
 
 def send_signal(pair, price, direction):
     utc_now = datetime.utcnow()
@@ -96,7 +101,8 @@ def send_signal(pair, price, direction):
         print(f"Signal sent for {pair}!")
     else:
         print(f"Error sending {pair} signal: {response.text}")
-      def signal_loop():
+
+def signal_loop():
     while True:
         for pair, code in PAIRS.items():
             price = get_live_price(code)
