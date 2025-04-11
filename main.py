@@ -166,3 +166,11 @@ def run_flask():
 
 Thread(target=run_flask).start()
 Thread(target=strategy_loop).start()
+@app.route('/start-signals')
+def start_signals():
+    global signal_loop_running
+    if not signal_loop_running:
+        signal_loop_running = True
+        Thread(target=signal_loop).start()
+        return "Signal loop started!"
+    return "Signal loop already running."
