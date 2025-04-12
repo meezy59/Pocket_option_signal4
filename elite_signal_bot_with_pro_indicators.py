@@ -75,7 +75,7 @@ def send_signal(pair, direction, price):
     est_now = datetime.now(pytz.timezone("US/Eastern")).strftime("%I:%M %p")
     content = (
         message = f"**TRADE ALERT: {pair} | Signal: {signal} | Time: {datetime.now().strftime('%H:%M:%S')}**"
-"
+"message = f"**TRADE ALERT: {pair} | Signal: {signal} | Time: {datetime.now().strftime('%H:%M:%S')}**"
         f"Direction: {direction}
 "
         f"Timeframe: 1 Minute
