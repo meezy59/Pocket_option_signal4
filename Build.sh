@@ -8,3 +8,4 @@ apt-get install -y wget gnupg ca-certificates curl fonts-liberation libappindica
 
 # Install Playwright browsers
 npx playwright install --with-deps
+chmod +x Build.sh
